@@ -41,11 +41,24 @@ class Connect4Board
     }
 }
 
+class PlayerAdder
+{
+    public static void AddPlayers(Connect4Board board)
+    {
+        Console.WriteLine("Enter name for Player 1: ");
+        string player1 = Console.ReadLine();
+        Console.WriteLine("Enter name for Player 2: ");
+        string player2 = Console.ReadLine();
+        Console.WriteLine("Players added successfully");
+    }
+}
+
 class Program
 {
     static void Main(string[] args)
     {
         Connect4Board board = new Connect4Board();
+        PlayerAdder.AddPlayers(board);
         board.PrintBoard();
     }
 }
