@@ -46,6 +46,7 @@ class Connect4Board
     {
         if (column < 1 || column > Cols)
         {
+            Console.WriteLine("Invalid Placment! Pick a number between 1 and 7");
             return false;
         }
 
@@ -53,6 +54,7 @@ class Connect4Board
 
         if (columnCount[colIndex] >= Rows)
         {
+            Console.WriteLine("Invalid Placement! Pick another column");
             return false;
         }
 
@@ -183,7 +185,10 @@ class Game
             {
                 board.PrintBoard();
 
-                if (board.CheckWin(currentPlayer, Connect4Board.Rows - board.columnCount[column - 1] - 1, column - 1))
+                // Calculate the row index based on the number of symbols in the column
+                int rowIndex = Connect4Board.Rows - board.columnCount[column - 1];
+
+                if (board.CheckWin(currentPlayer, rowIndex, column - 1))
                 {
                     Console.WriteLine($"Player {(currentPlayer == 'O' ? player1 : player2)} wins! Restart? Yes(1) No(2): ");
                     string restart = Console.ReadLine();
@@ -203,8 +208,7 @@ class Game
     }
 }
 
-
-    class Program
+class Program
 {
     static void Main(string[] args)
     {
